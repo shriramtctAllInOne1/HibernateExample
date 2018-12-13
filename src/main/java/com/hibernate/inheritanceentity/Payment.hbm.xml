@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.hibernate.inheritanceentity">
+	<class name="Payment" table="Payment" discriminator-value="PAYM"
+		catalog="testdb">
+		<id name="paymentId" type="java.lang.Integer">
+			<column name="PAY_ID" unique="true" />
+			<generator class="increment" />
+		</id>
+		<discriminator column="PAY_TYPE" type="string" length="51" />
+		<property name="amount" type="double">
+			<column name="AMOUNT" length="10" not-null="true" unique="true" />
+		</property>
+		<subclass name="Cheque" discriminator-value="CheckType">
+			<property name="ChequeType" column="cqtype" length="10" />
+		</subclass>
+		<subclass name="CreditCard" discriminator-value="CreditCardType">
+			<property name="CreditCardType" column="cctype" length="10" />
+		</subclass>
+	</class>
+
+</hibernate-mapping>
+

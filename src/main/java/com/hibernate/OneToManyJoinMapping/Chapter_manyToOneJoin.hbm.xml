@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.hibernate.OneToManyJoinMapping">
+	<class name="Chapter" table="Chapter">
+		<id name="id" column="CHAPTRE_ID">
+			<generator class="native" />
+		</id>
+		<property name="title" type="string" column="TITLE" />
+		<property name="noOfPages" type="int" column="NO_OF_PAGES" />
+		<join table="BOOK_CHAPTER" optional="true" inverse="false">
+			<key column="CHAPTRE_ID" unique="true" />
+			<many-to-one name="book" class="Book" column="BOOK_ID"  />
+		</join>
+	</class>
+</hibernate-mapping>

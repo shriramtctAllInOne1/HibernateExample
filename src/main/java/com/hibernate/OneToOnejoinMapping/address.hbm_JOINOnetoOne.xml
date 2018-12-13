@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+          "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+          <hibernate-mapping package="com.hibernate.OneToOnejoinMapping">
+          <class name="Address" table="address">
+          <id name="addressId">
+          <generator class="foreign">
+          <param name="property">employee</param>
+          </generator>
+          </id>
+          <property name="addressLine1"></property>
+          <property name="city"></property>
+          <property name="state"></property>
+          <property name="country"></property>
+        <!-- JOIN TABLE EX -->
+          <join table="EMP_ADDRESS" optional="true" inverse="true">
+			<key column="ADDRESS_ID" unique="true" />
+			<many-to-one name="employee" column="EMP_ID" not-null="true" unique="true" />
+		</join>
+          </class>
+          </hibernate-mapping>

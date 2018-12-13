@@ -1,0 +1,3 @@
+com\hibernate\common\App.class
+com\hibernate\persistence\HibernateUtil.class
+com\hibernate\common\Stock.class

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.hibernate.inheritanceentity">
+	<class name="Payment" table="Payment" catalog="testdb">
+		<id name="paymentId" type="java.lang.Integer">
+			<column name="PAY_ID" unique="true" />
+			<generator class="increment" />
+		</id>
+		<property name="amount" type="double">
+			<column name="AMOUNT" length="10" not-null="true" unique="true" />
+		</property>
+		<union-subclass name="Cheque" table="PaymentTypeCheck">
+			<property name="ChequeType" column="cqtype" length="10" />
+		</union-subclass>
+		<union-subclass name="CreditCard" table="PaymentTypeCredit">
+			<property name="CreditCardType" column="cctype" length="10" />
+		</union-subclass>
+	</class>
+
+</hibernate-mapping>
+

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+   <class name="com.hibernate.entity.Stock" table="stock" catalog="testdb">
+         <cache usage="read-only" />  
+        <id name="stockId" type="java.lang.Integer">
+            <column name="STOCK_ID" unique="true" />
+            <generator class="identity" />
+        </id>
+        <property name="stockCode" type="string">
+            <column name="STOCK_CODE" length="10" not-null="true" unique="true" />
+        </property>
+        <property name="stockName" type="string">
+            <column name="STOCK_NAME" length="20" not-null="true" unique="true" />
+        </property>
+    </class>
+    <!--  <class name="com.hibernate.entity.Stock" table="stock" catalog="testdb">
+        <id name="stockId" type="java.lang.Integer">
+            <column name="STOCK_ID" unique="false" />
+            <generator class="identity" />
+        </id>
+        <property name="stockCode" type="string">
+            <column name="STOCK_CODE" length="10" not-null="true"  />
+        </property>
+        <property name="stockName" type="string">
+            <column name="STOCK_NAME" length="20" not-null="true" />
+        </property>
+    </class> -->
+</hibernate-mapping>
+

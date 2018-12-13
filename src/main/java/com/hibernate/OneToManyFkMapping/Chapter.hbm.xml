@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.hibernate.OneToManyFkMapping">
+	<class name="Chapter" table="Chapter">
+		<id name="id" column="CHAPTRE_ID">
+			<generator class="native" />
+		</id>
+		<property name="title" type="string" column="TITLE" />
+		<property name="noOfPages" type="int" column="NO_OF_PAGES" />
+		<many-to-one name="book" class="Book" column="BOOK_ID" />
+	</class>
+</hibernate-mapping>
